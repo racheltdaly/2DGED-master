@@ -10,6 +10,8 @@ class SpriteData {
   static RUNNER_MOVE_KEYS = [Keys.A, Keys.D, Keys.Space, Keys.Enter];
   static RUNNER_RUN_VELOCITY = 0.1;
   static RUNNER_JUMP_VELOCITY = 0.6;
+
+  static ENEMY_START_POSITION = new Vector2(180,300);
   
   static RUNNER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",
@@ -35,42 +37,49 @@ class SpriteData {
           new Rect(5, 0, 28, 53)
         ]
       },
-      "run_left" : {     
-        fps: 12,
-        maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
-        startCellIndex: 0,
-        endCellIndex: 8,
-        boundingBoxDimensions: new Vector2(49, 54), //notice I choose the largest of all the widths taken from the cellData array below
-        cellData: [
-          new Rect(0, 305, 47, 54),
-          new Rect(55, 305, 44, 54),
-          new Rect(107, 305, 39, 54),
-          new Rect(152, 305, 46, 54),
-          new Rect(208, 305, 49, 54),
-          new Rect(265, 305, 46, 54),
-          new Rect(320, 305, 42, 54),
-          new Rect(380, 305, 35, 54),
-          new Rect(425, 305, 35, 54)
-        ]
-      }
+      // "run_left" : {     
+      //   fps: 12,
+      //   maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
+      //   startCellIndex: 0,
+      //   endCellIndex: 8,
+      //   boundingBoxDimensions: new Vector2(49, 54), //notice I choose the largest of all the widths taken from the cellData array below
+      //   cellData: [
+      //     new Rect(0, 305, 47, 54),
+      //     new Rect(55, 305, 44, 54),
+      //     new Rect(107, 305, 39, 54),
+      //     new Rect(152, 305, 46, 54),
+      //     new Rect(208, 305, 49, 54),
+      //     new Rect(265, 305, 46, 54),
+      //     new Rect(320, 305, 42, 54),
+      //     new Rect(380, 305, 35, 54),
+      //     new Rect(425, 305, 35, 54)
+      //   ]
+      // }
     }
   });
   
   static ENEMY_ANIMATION_DATA = Object.freeze({
     id: "enemy_animation_data",
-    spriteSheet: document.getElementById("spritesheet_main"),
+    spriteSheet: document.getElementById("monster_flying"),
+    actorType: ActorType.Enemy,
     alpha: 1,
     takes: {  
-      "wasp_fly" :  {    
+      "monster_fly" :  {    
         fps: 16,
         maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
         startCellIndex: 0,
         endCellIndex: 2,
         boundingBoxDimensions: new Vector2(35, 50), 
         cellData: [
-          new Rect(20, 234, 35, 50),
+          new Rect(1100, 60, 55, 36),
           new Rect(90, 234, 35, 50),
+          new Rect(160, 234, 35, 50),
+          new Rect(160, 234, 35, 50),
+          new Rect(160, 234, 35, 50),
+          new Rect(160, 234, 35, 50),
+          new Rect(160, 234, 35, 50),
           new Rect(160, 234, 35, 50)
+
         ]
       }
     }

@@ -186,8 +186,8 @@ function LoadSprites() {
 
   LoadPickupSprites();
 
-    //to do...
-  //LoadEnemySprites();
+  
+  LoadEnemySprites();
 }
 
 function LoadPlayerSprite() {
@@ -381,10 +381,46 @@ function LoadPlatformSprites() {
 }
 
 function LoadEnemySprites() {
-  //to do...
+   //step 1 - create AnimatedSpriteArtist
+   var takeName = "monster_fly";
+   var artist = new AnimatedSpriteArtist(ctx, SpriteData.ENEMY_ANIMATION_DATA);
+ 
+   //step 2 - set initial take
+   artist.SetTake(takeName);
+ 
+   //step 3 - create transform and use bounding box from initial take (this is why we make AnimatedSpriteArtist before Transform2D)
+   let transform = new Transform2D(
+     SpriteData.ENEMY_START_POSITION,
+     0,
+     Vector2.One,
+     Vector2.Zero,
+     artist.GetSingleFrameDimensions("monster_fly"),
+     0
+   );
+ 
+   //step 4 - create the CollidableSprite which adds Body which allows us to test for collision and add gravity
+   let enemySprite = new CollidableSprite(
+     "enemy",
+     ActorType.Enemy,
+     StatusType.Updated | StatusType.Drawn,
+     transform,
+     artist,
+     1
+   );
+ 
+   //step 5 - set performance characteristics of the body attached to the moveable sprite
+   enemySprite.Body.MaximumSpeed = 6;
+   enemySprite.Body.Friction = FrictionType.Normal;
+   enemySprite.Body.Gravity = GravityType.Normal;
+ 
+   //step 6 - add collision surface
+   enemySprite.collisionPrimitive = new RectCollisionPrimitive(
+     enemySprite.Transform2D,
+     0
+   );
+
+   objectManager.Add(enemySprite);
 }
 
-//#region DEMO - REMOVE LATER
-/***************************************DEMO FUNCTIONS ***************************************/
 
 //#endregion
