@@ -13,7 +13,7 @@ class SpriteData {
   
   static RUNNER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",
-    spriteSheet: document.getElementById("spritesheet_main"),
+    spriteSheet: document.getElementById("character_walk"),
     actorType: ActorType.Player,
     alpha: 1,
     takes: {  
@@ -22,17 +22,17 @@ class SpriteData {
         maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
         startCellIndex: 0,
         endCellIndex: 8,
-        boundingBoxDimensions: new Vector2(49, 54), //notice I choose the largest of all the widths taken from the cellData array below
+        boundingBoxDimensions: new Vector2(37, 53), //notice I choose the largest of all the widths taken from the cellData array below
         cellData: [
-          new Rect(414, 385, 47, 54),
-          new Rect(362, 385, 44, 54),
-          new Rect(314, 385, 39, 54),
-          new Rect(265, 385, 46, 54),
-          new Rect(205, 385, 49, 54),
-          new Rect(150, 385, 46, 54),
-          new Rect(96, 385, 46, 54),
-          new Rect(45, 385, 35, 54),
-          new Rect(0, 385, 35, 54)
+          new Rect(515, 0, 35, 53),
+          new Rect(450, 0, 35, 53),
+          new Rect(390, 0, 32, 53),
+          new Rect(325, 0, 37, 53),
+          new Rect(260, 0, 34, 53),
+          new Rect(195, 0, 30, 53),
+          new Rect(135, 0, 30, 53),
+          new Rect(70, 0, 31, 53),
+          new Rect(5, 0, 28, 53)
         ]
       },
       "run_left" : {     
