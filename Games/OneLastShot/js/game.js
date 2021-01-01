@@ -381,10 +381,11 @@ function LoadPlatformSprites() {
 }
 
 function LoadEnemySprites() {
+ 
    //step 1 - create AnimatedSpriteArtist
    var takeName = "monster_fly";
    var artist = new AnimatedSpriteArtist(ctx, SpriteData.ENEMY_ANIMATION_DATA);
- 
+  
    //step 2 - set initial take
    artist.SetTake(takeName);
  
@@ -409,7 +410,7 @@ function LoadEnemySprites() {
    );
  
    //step 5 - set performance characteristics of the body attached to the moveable sprite
-   enemySprite.Body.MaximumSpeed = 4;
+   enemySprite.Body.MaximumSpeed = 6;
    enemySprite.Body.Friction = FrictionType.Normal;
    enemySprite.Body.Gravity = GravityType.Normal;
  

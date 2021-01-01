@@ -172,7 +172,8 @@ class PlayerController {
       keyboardManager.IsKeyDown(this.moveKeys[2]) &&
       !parent.Body.IsJumping &&
       parent.Body.IsOnGround
-    ) {
+    ) 
+    {
       parent.Body.IsJumping = true;
       parent.Body.IsOnGround = false;
       parent.Body.SetVelocityY(-this.jumpVelocity * gameTime.ElapsedTimeInMs);
@@ -236,6 +237,9 @@ class PlayerController {
 
         if (Collision.Intersects(parent, sprite)) {
           //add your code here...
+          objectManager.Remove(sprite);
+          soundManager.Play("gameover");
+          //lives-1;
         }
       }
     }
