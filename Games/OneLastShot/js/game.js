@@ -409,7 +409,7 @@ function LoadEnemySprites() {
    );
  
    //step 5 - set performance characteristics of the body attached to the moveable sprite
-   enemySprite.Body.MaximumSpeed = 6;
+   enemySprite.Body.MaximumSpeed = 4;
    enemySprite.Body.Friction = FrictionType.Normal;
    enemySprite.Body.Gravity = GravityType.Normal;
  
