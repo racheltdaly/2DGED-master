@@ -117,6 +117,7 @@ const cueArray = [
   new AudioCue("gameover", 1, 1, false, 1),
   new AudioCue("gunshot", 1, 1, false, 0),
   new AudioCue("background", 0.6, 1, true, 0),
+  new AudioCue("mob_hit", 1, 1, false, 0),
   //add more cues here but make sure you load in the HTML!
 ];
 
@@ -163,7 +164,7 @@ function StartGame(gameTime) {
   //set any win/lose variables
   var livesElement = document.getElementById("ui_lives");
   livesElement.style.display = "block";
-  livesElement.innerHTML = "<strike>hello</strike> - " + lives + "/5";
+  livesElement.innerHTML = "Hearts: " + lives + "/3";
 
   var scoreElement = document.getElementById("ui_score");
   scoreElement.style.display = "block";
@@ -419,6 +420,10 @@ function LoadEnemySprites() {
      enemySprite.Transform2D,
      0
    );
+
+    // enemySprite.MoveEnemy(
+
+    // )
 
    objectManager.Add(enemySprite);
 }

@@ -180,6 +180,7 @@ class PlayerController {
 
       //add your code here...
       //set take to "player_jump"
+      //parent.Artist.SetTake("character_jump");
       soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
     }
   }
@@ -212,6 +213,8 @@ class PlayerController {
 
           //remove the pickup
           objectManager.Remove(sprite);
+
+          
         }
       }
     }
@@ -238,7 +241,7 @@ class PlayerController {
         if (Collision.Intersects(parent, sprite)) {
           //add your code here...
           objectManager.Remove(sprite);
-          soundManager.Play("gameover");
+          soundManager.Play("mob_hit");
           //lives-1;
         }
       }
