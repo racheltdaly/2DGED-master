@@ -248,7 +248,7 @@ class PlayerController {
           //add your code here...
           objectManager.Remove(sprite);
           soundManager.Play("mob_hit");
-          //lives-1;
+          lives=lives-1;
         }
       }
     }

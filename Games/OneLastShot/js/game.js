@@ -22,6 +22,10 @@ var keyboardManager = null;
 //debug
 var debugDrawer = null;
 
+//spriteArtists
+var artist = null;
+let spriteArtist = null;
+
 //#endregion
 
 //#region Functions
@@ -39,6 +43,16 @@ function Start() {
 
   //start Update/Draw cycle i.e. start the game
   window.requestAnimationFrame(Animate);
+}
+
+function Pause(){
+    objectManager.StatusType = StatusType.Drawn | 0;
+
+}
+
+function Unpause(){
+  objectManager.StatusType = StatusType.Drawn | StatusType.Updated;
+
 }
 
 function Animate(now) {
@@ -145,6 +159,7 @@ function UpdateGameState(gameTime) {
   }
 
   //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!"
+  //if()
 }
 
 /**
@@ -157,6 +172,16 @@ function HandleInput(gameTime) {
   //is the game starting
   if (keyboardManager.IsKeyDown(Keys.Enter)) {
     StartGame(gameTime);
+  }
+
+  //Pause the Game
+  if(keyboardManager.IsKeyDown(Keys.P))
+  {
+    Pause();    
+  }
+  if(keyboardManager.IsKeyDown(Keys.U))
+  {
+    Unpause();    
   }
 
   //add more code to check for input (e.g. Press "O" for Objective or "M" for menu)
@@ -196,7 +221,7 @@ function LoadSprites() {
 function LoadPlayerSprite() {
   //step 1 - create AnimatedSpriteArtist
   var takeName = "run_right";
-  var artist = new AnimatedSpriteArtist(ctx, SpriteData.CHARACTER_ANIMATION_DATA);
+  artist = new AnimatedSpriteArtist(ctx, SpriteData.CHARACTER_ANIMATION_DATA);
 
   //step 2 - set initial take
   artist.SetTake(takeName);
@@ -259,7 +284,7 @@ function LoadPickupSprites() {
   //loop through the translation array
   for (var translation of pickTranslationArray) {
     //create an animated artist
-    let spriteArtist = new AnimatedSpriteArtist(
+    spriteArtist = new AnimatedSpriteArtist(
       ctx,
       SpriteData.COLLECTIBLES_ANIMATION_DATA
     );
@@ -387,7 +412,7 @@ function LoadEnemySprites() {
  
    //step 1 - create AnimatedSpriteArtist
    var takeName = "monster_fly";
-   var artist = new AnimatedSpriteArtist(ctx, SpriteData.ENEMY_ANIMATION_DATA);
+   artist = new AnimatedSpriteArtist(ctx, SpriteData.ENEMY_ANIMATION_DATA);
   
    //step 2 - set initial take
    artist.SetTake(takeName);
