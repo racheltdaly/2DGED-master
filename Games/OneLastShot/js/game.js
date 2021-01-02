@@ -47,12 +47,12 @@ function Start() {
 
 function Pause(){
     objectManager.StatusType = StatusType.Drawn | 0;
-
+    console.log("Paused");
 }
 
 function Unpause(){
   objectManager.StatusType = StatusType.Drawn | StatusType.Updated;
-
+  console.log("Unpaused");
 }
 
 function Animate(now) {
@@ -137,7 +137,7 @@ const cueArray = [
   new AudioCue("health_pickup", 1, 1, false, 0),
 ];
 
-var lives = 5;
+var lives = 3;
 var score = 0;
 //#endregion
 
@@ -158,8 +158,17 @@ function UpdateGameState(gameTime) {
     scoreElement.innerHTML = score;
   }
 
+  var livesElement = document.getElementById("ui_lives");
+  if (livesElement) {
+    livesElement.style.display = "block";
+    livesElement.innerHTML =  "Lives: " + lives + "/3";
+  }
+
   //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!"
-  //if()
+  if(scoreElement==10)
+  {
+
+  }
 }
 
 /**
@@ -191,7 +200,7 @@ function StartGame(gameTime) {
   //set any win/lose variables
   var livesElement = document.getElementById("ui_lives");
   livesElement.style.display = "block";
-  livesElement.innerHTML = "Hearts: " + lives + "/3";
+  livesElement.innerHTML = "Lives: " + lives + "/3";
 
   var scoreElement = document.getElementById("ui_score");
   scoreElement.style.display = "block";
