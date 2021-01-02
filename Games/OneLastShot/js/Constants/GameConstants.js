@@ -15,7 +15,7 @@ class SpriteData {
   
   static RUNNER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",
-    spriteSheet: document.getElementById("character_walk"),
+    spriteSheet: document.getElementById("character_sheet"),
     actorType: ActorType.Player,
     alpha: 1,
     takes: {  
@@ -55,24 +55,22 @@ class SpriteData {
           new Rect(425, 305, 35, 54)
         ]
       },
-      // "character_jump" : {     
-      //   fps: 12,
-      //   maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
-      //   startCellIndex: 0,
-      //   endCellIndex: 8,
-      //   boundingBoxDimensions: new Vector2(49, 54), //notice I choose the largest of all the widths taken from the cellData array below
-      //   cellData: [
-      //     new Rect(0, 305, 47, 54),
-      //     new Rect(55, 305, 44, 54),
-      //     new Rect(107, 305, 39, 54),
-      //     new Rect(152, 305, 46, 54),
-      //     new Rect(208, 305, 49, 54),
-      //     new Rect(265, 305, 46, 54),
-      //     new Rect(320, 305, 42, 54),
-      //     new Rect(380, 305, 35, 54),
-      //     new Rect(425, 305, 35, 54)
-      //   ]
-      // }
+      "jump" : {     
+        fps: 12,
+        maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
+        startCellIndex: 0,
+        endCellIndex: 8,
+        boundingBoxDimensions: new Vector2(37, 56), //notice I choose the largest of all the widths taken from the cellData array below
+        cellData: [
+          new Rect(10, 155, 35, 56),
+          new Rect(75, 155, 31, 55),
+          new Rect(140, 155, 31, 56),
+          new Rect(200, 155, 35, 56),
+          new Rect(263, 155, 37, 56),
+          new Rect(326, 155, 37, 56),
+          new Rect(395, 155, 32, 56)
+        ]
+      }
 
     }
   });

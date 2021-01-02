@@ -117,8 +117,10 @@ const cueArray = [
   new AudioCue("gameover", 1, 1, false, 1),
   new AudioCue("gunshot", 1, 1, false, 0),
   new AudioCue("background", 0.6, 1, true, 0),
-  new AudioCue("mob_hit", 1, 1, false, 0),
+ 
   //add more cues here but make sure you load in the HTML!
+  new AudioCue("mob_hit", 1, 1, false, 0),
+  new AudioCue("health_pickup", 1, 1, false, 0),
 ];
 
 var lives = 5;

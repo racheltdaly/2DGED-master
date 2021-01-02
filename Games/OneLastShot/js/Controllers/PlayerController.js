@@ -169,18 +169,20 @@ class PlayerController {
   HandleJump(gameTime, parent) {
     //if jump key is pressed and player is not jumping and on the ground then jump
     if (
-      keyboardManager.IsKeyDown(this.moveKeys[2]) &&
-      !parent.Body.IsJumping &&
-      parent.Body.IsOnGround
+      keyboardManager.IsKeyDown(this.moveKeys[2])
+       &&
+      !parent.Body.IsJumping 
+      // &&
+      // parent.Body.IsOnGround
     ) 
     {
       parent.Body.IsJumping = true;
-      parent.Body.IsOnGround = false;
+      //parent.Body.IsOnGround = false;
       parent.Body.SetVelocityY(-this.jumpVelocity * gameTime.ElapsedTimeInMs);
 
       //add your code here...
       //set take to "player_jump"
-      //parent.Artist.SetTake("character_jump");
+      //parent.Artist.SetTake("jump");
       soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
     }
   }
@@ -209,7 +211,7 @@ class PlayerController {
           score += 10;
 
           //play a sound
-          soundManager.Play("coin_pickup");
+          soundManager.Play("health_pickup");
 
           //remove the pickup
           objectManager.Remove(sprite);
