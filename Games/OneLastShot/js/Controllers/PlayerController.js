@@ -86,12 +86,16 @@ class PlayerController {
         if (
           collisionLocationType === CollisionLocationType.Left ||
           collisionLocationType === CollisionLocationType.Right
-        ) {
+        )
+        {
           parent.Body.SetVelocityX(0);
-        } else if (collisionLocationType === CollisionLocationType.Bottom) {
+        } 
+        else if (collisionLocationType === CollisionLocationType.Bottom) {
           parent.Body.IsOnGround = true;
           parent.Body.IsJumping = false;
-        } else if (collisionLocationType === CollisionLocationType.Top) {
+          parent.Artist.SetTake("run_right");
+        }
+        else if (collisionLocationType === CollisionLocationType.Top) {
           parent.Body.SetVelocityY(1);
         }
       }
@@ -182,7 +186,7 @@ class PlayerController {
 
       //add your code here...
       //set take to "player_jump"
-      //parent.Artist.SetTake("jump");
+      parent.Artist.SetTake("jump");
       soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
     }
   }

@@ -196,7 +196,7 @@ function LoadSprites() {
 function LoadPlayerSprite() {
   //step 1 - create AnimatedSpriteArtist
   var takeName = "run_right";
-  var artist = new AnimatedSpriteArtist(ctx, SpriteData.RUNNER_ANIMATION_DATA);
+  var artist = new AnimatedSpriteArtist(ctx, SpriteData.CHARACTER_ANIMATION_DATA);
 
   //step 2 - set initial take
   artist.SetTake(takeName);

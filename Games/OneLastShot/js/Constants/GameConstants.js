@@ -9,11 +9,11 @@ class SpriteData {
   static RUNNER_START_POSITION = new Vector2(100, 575);
   static RUNNER_MOVE_KEYS = [Keys.A, Keys.D, Keys.Space, Keys.Enter];
   static RUNNER_RUN_VELOCITY = 0.1;
-  static RUNNER_JUMP_VELOCITY = 1.0;
+  static RUNNER_JUMP_VELOCITY = 1.5;
 
   static ENEMY_START_POSITION = new Vector2(180,570);
   
-  static RUNNER_ANIMATION_DATA = Object.freeze({
+  static CHARACTER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",
     spriteSheet: document.getElementById("character_sheet"),
     actorType: ActorType.Player,
@@ -56,10 +56,10 @@ class SpriteData {
         ]
       },
       "jump" : {     
-        fps: 12,
-        maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
+        fps: 20,
+        maxLoopCount: 4, //-1 = always, 0 = run once, N = run N times
         startCellIndex: 0,
-        endCellIndex: 8,
+        endCellIndex: 4,
         boundingBoxDimensions: new Vector2(37, 56), //notice I choose the largest of all the widths taken from the cellData array below
         cellData: [
           new Rect(10, 155, 35, 56),
