@@ -11,8 +11,12 @@ class SpriteData {
   static RUNNER_RUN_VELOCITY = 0.2;
   static RUNNER_JUMP_VELOCITY = 0.2;
 
-  static ENEMY_START_POSITION = new Vector2(180,570);
-  static ENEMY_MOVE_VELOCITY = 0.6;
+  //randomises enemy start position
+  static ENEMY_X = (Math.ceil(Math.random() * 100)+850);
+  static ENEMY_Y = (Math.ceil(Math.random() * 410));
+
+  static ENEMY_START_POSITION = new Vector2(this.ENEMY_X,this.ENEMY_Y);
+  static ENEMY_MOVE_VELOCITY = 0.002;
   
   static CHARACTER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",
