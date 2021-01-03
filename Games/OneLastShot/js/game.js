@@ -10,6 +10,8 @@ var cvs = document.getElementById("main_canvas");
 
 //get a handle to the 2D context of the canvas
 var ctx = cvs.getContext("2d");
+var screenBounds = new Rect(0,0,1024, 410);
+
 
 //stores elapsed and total game time
 var gameTime = null;
@@ -18,6 +20,7 @@ var gameTime = null;
 var objectManager = null;
 var soundManager = null;
 var keyboardManager = null;
+
 
 //debug
 var debugDrawer = null;
@@ -155,7 +158,7 @@ function UpdateGameState(gameTime) {
   var scoreElement = document.getElementById("ui_score");
   if (scoreElement) {
     scoreElement.style.display = "block";
-    scoreElement.innerHTML = score;
+    scoreElement.innerHTML = "Score: "+score;
   }
 
   var livesElement = document.getElementById("ui_lives");
@@ -209,7 +212,7 @@ function StartGame(gameTime) {
   scoreElement.innerHTML = "Score"+score;
 
   //Hide "Press Enter"
-  document.getElementById("menu_opening").style.display = "none";
+  document.getElementById("menu_opening").style.display = "none"; 
 
   //unpause game
   objectManager.StatusType = StatusType.Drawn | StatusType.Updated;
@@ -223,10 +226,7 @@ function LoadSprites() {
   LoadPlayerSprite();
   LoadPlatformSprites();
   LoadBackgroundSprites();
-
   LoadPickupSprites();
-
-  
   LoadEnemySprites();
 }
 

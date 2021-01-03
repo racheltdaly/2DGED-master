@@ -209,6 +209,14 @@ class ObjectManager {
         }
         }
     }
+  //   if((this.statusType & StatusType.Drawn) != 0){
+  //     for (let key in this.sprites) {
+  //     for (let sprite of this.sprites[key]) {
+  //         if(screenBounds.Intersects(sprite.collisionPrimitive.GetBoundingPrimitive()))
+  //                   sprite.Draw(gameTime);
+  //     }
+  //     }
+  // }
   }
   //#endregion
 }

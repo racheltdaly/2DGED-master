@@ -199,7 +199,7 @@ class PlayerController {
       //add your code here...
       //set take to "player_jump"
       parent.Artist.SetTake("jump");
-      soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
+      //soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
     }
   }
 
@@ -249,7 +249,8 @@ class PlayerController {
    * @param {*} parent
    * @memberof PlayerController
    */
-  HandleEnemyCollision(parent) {
+  HandleEnemyCollision(parent) 
+  {
     let sprites = objectManager.Find(ActorType.Enemy);
 
     if (sprites) {
@@ -264,6 +265,28 @@ class PlayerController {
         }
       }
     }
+  }
+
+   /**
+   * Change the code in this method to play a particular sound when the player 
+   * collides with the enemy, or remove the enemy, or kill the player and change
+   * to game over screen (i.e. by setting object manager to StatusType.Drawn only to pause
+   * update and then by setting the "menu_winlose" <div> block to display=block with a message set in
+   * the innerHTML of that <div> block )
+   *
+   * @param {*} gameTime
+   * @param {*} parent
+   * @memberof PlayerController
+   */
+  HandleBoundsCollision(parent) 
+  { 
+    if (Collision.Intersects(parent, screenBounds)) 
+    {
+          //add your code here...
+         console.log("boop")
+    }
+      
+    
   }
   //#endregion
 }
