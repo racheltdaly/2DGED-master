@@ -6,14 +6,14 @@
 class SpriteData {
 
   //#region Sprite Data
-  static RUNNER_START_POSITION = new Vector2(100, 575);
+  static RUNNER_START_POSITION = new Vector2(50, 350);
   static RUNNER_MOVE_KEYS = [Keys.A, Keys.D, Keys.Space, Keys.Enter,Keys.ArrowRight];
   static RUNNER_RUN_VELOCITY = 0.2;
   static RUNNER_JUMP_VELOCITY = 0.2;
 
   //randomises enemy start position
   static ENEMY_X = (Math.ceil(Math.random() * 100)+850);
-  static ENEMY_Y = (Math.ceil(Math.random() * 410));
+  static ENEMY_Y = (Math.ceil(Math.random() * 410)+50);
 
   static ENEMY_START_POSITION = new Vector2(this.ENEMY_X,this.ENEMY_Y);
   static ENEMY_MOVE_VELOCITY = 0.002;
