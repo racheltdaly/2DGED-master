@@ -5,15 +5,15 @@
  * @class Body
  */
 const FrictionType = Object.freeze({
-    Low: 0.9,
-    Normal: 0.7,
-    High: 0.5
+    Low: 0.10,
+    Normal: 0.03,
+    High: 0.3
 });
 const GravityType = Object.freeze({
     Off: 0,
     Weak: 0.2,
-    Normal: 0.4,
-    Strong: 0.7
+    Normal: 0.02,
+    Strong: 0.002
 });
 class Body {
 
@@ -57,6 +57,7 @@ class Body {
         this.velocityY = 0;
 
         this.IsJumping = false;
+        this.IsShooting = false;
         this.IsOnGround = false;
 
         this.MaximumSpeed = this.originalMaximumSpeed = maximumSpeed;
@@ -69,6 +70,7 @@ class Body {
         this.velocityY = 0;
 
         this.IsJumping = false;
+        this.IsShooting = false;
         this.IsOnGround = false;
 
         this.MaximumSpeed = this.originalMaximumSpeed;

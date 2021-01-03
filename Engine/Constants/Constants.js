@@ -128,6 +128,7 @@ const Keys = Object.freeze({
   ArrowDown: "ArrowDown",
   ArrowLeft: "ArrowLeft",
   ArrowRight: "ArrowRight",
+  //MouseClick: "onClick",
   //add keys...
 });
 

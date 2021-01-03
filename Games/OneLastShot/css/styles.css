@@ -86,3 +86,8 @@ body {
   right:20px;
   top:20px;
 }
+
+#menu_paused
+{
+  position:center;  
+}

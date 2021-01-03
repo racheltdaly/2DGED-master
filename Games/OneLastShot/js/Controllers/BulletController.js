@@ -47,5 +47,8 @@ class BulletController
    }
 
    //to do...Equals, GetHashCode
-
+   Equals(other) {
+      //to do...
+      throw "Not Yet Implemented";
+    }
 }

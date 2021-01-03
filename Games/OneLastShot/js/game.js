@@ -165,7 +165,7 @@ function UpdateGameState(gameTime) {
   }
 
   //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!"
-  if(scoreElement==10)
+  if(scoreElement==10 || gameTime.totalElapsedTimeInMs)
   {
 
   }
@@ -187,10 +187,12 @@ function HandleInput(gameTime) {
   if(keyboardManager.IsKeyDown(Keys.P))
   {
     Pause();    
+    document.getElementById("menu_paused").style.display = "block";
   }
   if(keyboardManager.IsKeyDown(Keys.U))
   {
     Unpause();    
+    document.getElementById("menu_paused").style.display = "none";
   }
 
   //add more code to check for input (e.g. Press "O" for Objective or "M" for menu)
@@ -204,7 +206,7 @@ function StartGame(gameTime) {
 
   var scoreElement = document.getElementById("ui_score");
   scoreElement.style.display = "block";
-  scoreElement.innerHTML = score;
+  scoreElement.innerHTML = "Score"+score;
 
   //Hide "Press Enter"
   document.getElementById("menu_opening").style.display = "none";

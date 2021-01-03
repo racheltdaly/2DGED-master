@@ -140,7 +140,14 @@ class PlayerController {
    * @param {*} parent
    * @memberof PlayerController
    */
-  HandleKeyboard(gameTime, parent) {}
+  HandleKeyboard(gameTime, parent) {
+    if (keyboardManager.IsKeyDown(this.moveKeys[4]) && !parent.Body.IsShooting) 
+    {
+      parent.Artist.SetTake("character_shoot");
+      parent.Body.IsShooting = true;
+      console.log("Shoot");
+    }
+  }
 
   /**
    * Change the names of the takes in this method to suit the take names in your game
@@ -155,11 +162,14 @@ class PlayerController {
       parent.Body.AddVelocityX(-this.runVelocity * gameTime.ElapsedTimeInMs);
       //add your code here...
       parent.Artist.SetTake("run_left");
+      //parent.Body.IsShooting = false;
     } else if (keyboardManager.IsKeyDown(this.moveKeys[1])) {
       parent.Body.AddVelocityX(this.runVelocity * gameTime.ElapsedTimeInMs);
       //add your code here...
       parent.Artist.SetTake("run_right");
+      parent.Body.IsShooting = false;
     }
+   
   }
 
   /**
@@ -174,16 +184,18 @@ class PlayerController {
     //if jump key is pressed and player is not jumping and on the ground then jump
     if (
       keyboardManager.IsKeyDown(this.moveKeys[2])
-       &&
-      !parent.Body.IsJumping 
+      //  &&
+      // !parent.Body.IsJumping 
       // &&
       // parent.Body.IsOnGround
     ) 
     {
+      
       parent.Body.IsJumping = true;
+      parent.Body.IsShooting = false;
       //parent.Body.IsOnGround = false;
       parent.Body.SetVelocityY(-this.jumpVelocity * gameTime.ElapsedTimeInMs);
-
+      
       //add your code here...
       //set take to "player_jump"
       parent.Artist.SetTake("jump");

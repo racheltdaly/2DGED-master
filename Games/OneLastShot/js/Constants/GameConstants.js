@@ -7,9 +7,9 @@ class SpriteData {
 
   //#region Sprite Data
   static RUNNER_START_POSITION = new Vector2(100, 575);
-  static RUNNER_MOVE_KEYS = [Keys.A, Keys.D, Keys.Space, Keys.Enter];
-  static RUNNER_RUN_VELOCITY = 0.1;
-  static RUNNER_JUMP_VELOCITY = 1.5;
+  static RUNNER_MOVE_KEYS = [Keys.A, Keys.D, Keys.Space, Keys.Enter,Keys.ArrowRight];
+  static RUNNER_RUN_VELOCITY = 0.2;
+  static RUNNER_JUMP_VELOCITY = 0.2;
 
   static ENEMY_START_POSITION = new Vector2(180,570);
   
@@ -57,7 +57,7 @@ class SpriteData {
       },
       "jump" : {     
         fps: 20,
-        maxLoopCount: 4, //-1 = always, 0 = run once, N = run N times
+        maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
         startCellIndex: 0,
         endCellIndex: 4,
         boundingBoxDimensions: new Vector2(37, 56), //notice I choose the largest of all the widths taken from the cellData array below
@@ -69,6 +69,28 @@ class SpriteData {
           new Rect(263, 155, 37, 56),
           new Rect(326, 155, 37, 56),
           new Rect(395, 155, 32, 56)
+        ]
+      },
+      "character_shoot" : {     
+        fps: 13,
+        maxLoopCount: 0, //-1 = always, 0 = run once, N = run N times
+        startCellIndex: 0,
+        endCellIndex: 8,
+        boundingBoxDimensions: new Vector2(49, 57), //notice I choose the largest of all the widths taken from the cellData array below
+        cellData: [
+          new Rect(5, 75, 49, 56),
+          new Rect(73, 75, 41, 55),
+          new Rect(137, 75, 44, 56),
+          new Rect(200, 75, 42, 56),
+          new Rect(265, 75, 40, 55),
+          new Rect(330, 72, 42, 59),
+          new Rect(395, 70, 38, 60),
+          new Rect(455, 72, 44, 59),
+          new Rect(518, 75, 43, 56),
+          new Rect(585, 74, 40, 57),
+          new Rect(650, 75, 39, 56),
+          new Rect(713, 74, 37, 56),
+          new Rect(778, 75, 37, 56)
         ]
       }
 
