@@ -12,6 +12,7 @@ class SpriteData {
   static RUNNER_JUMP_VELOCITY = 0.2;
 
   static ENEMY_START_POSITION = new Vector2(180,570);
+  static ENEMY_MOVE_VELOCITY = 0.6;
   
   static CHARACTER_ANIMATION_DATA = Object.freeze({
     id: "runner_animation_data",

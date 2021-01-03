@@ -450,8 +450,8 @@ function LoadEnemySprites() {
  
    //step 5 - set performance characteristics of the body attached to the moveable sprite
    enemySprite.Body.MaximumSpeed = 6;
-   enemySprite.Body.Friction = FrictionType.Normal;
-   enemySprite.Body.Gravity = GravityType.Normal;
+   enemySprite.Body.Friction = 0.7;//change
+   enemySprite.Body.Gravity = 0.4;// change
  
    //step 6 - add collision surface
    enemySprite.collisionPrimitive = new RectCollisionPrimitive(
@@ -459,9 +459,13 @@ function LoadEnemySprites() {
      0
    );
 
-    // enemySprite.MoveEnemy(
-
-    // )
+   enemySprite.AttachController
+   (
+    new EnemyController
+    (
+      SpriteData.ENEMY_MOVE_VELOCITY
+    )
+  );
 
    objectManager.Add(enemySprite);
 }
