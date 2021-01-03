@@ -167,11 +167,23 @@ function UpdateGameState(gameTime) {
     livesElement.innerHTML =  "Lives: " + lives + "/3";
   }
 
-  //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!"
-  if(scoreElement==10 || gameTime.totalElapsedTimeInMs)
+  //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!" gameTime.totalElapsedTimeInMs ==10000
+  if(score==10)
   {
-
+    //console.log("win");
+    objectManager.StatusType = StatusType.Drawn | 0;
+    document.getElementById("menu_win").style.display = "block";
   }
+
+  if(lives==0)
+  {
+    //console.log("lose");
+    objectManager.StatusType = StatusType.Drawn | 0;
+    document.getElementById("menu_lost").style.display = "block";
+  }
+
+
+
 }
 
 /**
@@ -285,7 +297,7 @@ function LoadPlayerSprite() {
 function LoadPickupSprites() {
   //to add lots of pickups we can also just create a local array of positions for the pickups
   let pickTranslationArray = [
-    new Vector2(450, 525),
+    new Vector2(200, 525),
     new Vector2(525, 525),
     new Vector2(725, 425),
   ];
