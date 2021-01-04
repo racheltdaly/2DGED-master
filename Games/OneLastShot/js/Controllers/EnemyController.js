@@ -21,10 +21,8 @@ class EnemyController {
     //#region Core Methods - doesnt need to change
     Execute(gameTime, parent) {
         parent.Body.AddVelocityX(-this.moveVelocity * 8);
-    //   this.HandleMove(gameTime, parent);
-      //this.ApplyForces(parent);
-         this.CheckCollisions(parent);
-         this.ApplyInput(parent);
+        this.CheckCollisions(parent);
+        this.ApplyInput(parent);
     }
   
     // ApplyForces(parent) {
@@ -103,11 +101,32 @@ class EnemyController {
           if (Collision.Intersects(parent, sprite)) {
             //add your code here...
             objectManager.Remove(sprite);
+            //this.ResetBullet(sprite);
             soundManager.Play("mob_hit");
+            parent.Artist.SetTake("monster_die");
+            objectManager.Remove(parent);
+            //this.ResetEnemy(parent);
+
             score+=10;
           }
         }
       }
+    }
+
+    ResetEnemy(parent)
+    {      
+      let x = (Math.ceil(Math.random() * 100)+850);
+      let y = (Math.ceil(Math.random() * 410)+50);
+      console.log("reset",x,y);
+      parent.Body.SetVelocityX(x);
+      parent.Body.SetVelocityY(y);
+      //objectManager.Update(gameTime);
+    }
+
+    ResetBullet(sprite)
+    {
+      sprite.Body.SetVelocityX(30);
+      sprite.Body.SetVelocityY(100);
     }
   
     //#endregion

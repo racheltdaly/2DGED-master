@@ -11,14 +11,14 @@ class SpriteData {
   static RUNNER_RUN_VELOCITY = 0.2;
   static RUNNER_JUMP_VELOCITY = 0.2;
 
-  static ARROW_START_POSITION = new Vector2(25, 350);
+  static ARROW_START_POSITION = new Vector2(50, 375);
   static ARROW_MOVE_VELOCITY = 0.02;
 
   //randomises enemy start position
   static ENEMY_X = (Math.ceil(Math.random() * 100)+850);
   static ENEMY_Y = (Math.ceil(Math.random() * 410)+50);
 
-  static ENEMY_START_POSITION = new Vector2(100,350);
+  static ENEMY_START_POSITION = new Vector2(this.ENEMY_X,this.ENEMY_Y);
   static ENEMY_MOVE_VELOCITY = 0.002;
   
   static CHARACTER_ANIMATION_DATA = Object.freeze({
@@ -107,7 +107,7 @@ class SpriteData {
   
   static ENEMY_ANIMATION_DATA = Object.freeze({
     id: "enemy_animation_data",
-    spriteSheet: document.getElementById("monster_flying"),
+    spriteSheet: document.getElementById("enemy_sheet"),
     actorType: ActorType.Enemy,
     alpha: 1,
     takes: {  
@@ -126,6 +126,19 @@ class SpriteData {
           new Rect(350, 60, 45, 30),
           new Rect(200, 60, 47, 36),
           new Rect(50, 60, 45, 34)
+        ]
+      },
+      "monster_die" :  {    
+        fps: 12,
+        maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
+        startCellIndex: 0,
+        endCellIndex: 2,
+        boundingBoxDimensions: new Vector2(63, 40), 
+        cellData: [
+          new Rect(55, 125, 46, 40),
+          new Rect(210, 130, 40, 36),
+          new Rect(348, 150, 63, 17),
+          new Rect(500, 150, 56, 16)
         ]
       }
     }

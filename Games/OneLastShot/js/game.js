@@ -168,7 +168,7 @@ function UpdateGameState(gameTime) {
   }
 
   //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!" gameTime.totalElapsedTimeInMs ==10000
-  if(score==10)
+  if(score==20)
   {
     //console.log("win");
     objectManager.StatusType = StatusType.Drawn | 0;
@@ -236,7 +236,7 @@ function StartGame(gameTime) {
 
 function LoadSprites() {
   LoadPlayerSprite();
-  LoadPlatformSprites();
+  //LoadPlatformSprites();
   LoadBackgroundSprites();
   LoadPickupSprites();
   LoadEnemySprites();

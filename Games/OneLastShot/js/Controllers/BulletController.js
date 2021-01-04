@@ -53,10 +53,24 @@ class BulletController
     }
 
    HandleMove(gameTime, parent) {
+      
+      //Hold to shoot
       if (keyboardManager.IsKeyDown(Keys.ArrowRight)) {
          parent.Body.AddVelocityX(this.moveSpeed * 8);
       }
-     
+      
+      else 
+      {
+         let sprites = objectManager.Find(ActorType.Player);
+         if(sprites)
+         {
+            for (let i = 0; i < sprites.length; i++) {
+               let sprite = sprites[i];
+               parent.Body.SetVelocityX(sprite.Body.VelocityX);
+               parent.Body.SetVelocityY(sprite.Body.VelocityY);
+            }
+         }
+      }
    }
 
    Clone() {
