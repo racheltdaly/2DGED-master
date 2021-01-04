@@ -131,16 +131,16 @@ function LoadDebug(bDebugEnabled) {
 
 const cueArray = [
   new AudioCue("coin_pickup", 1, 1, false, 1),
-  new AudioCue("gameover", 1, 1, false, 1),
-  new AudioCue("gunshot", 1, 1, false, 0),
+  //new AudioCue("gameover", 1, 1, false, 1),
+  //new AudioCue("gunshot", 1, 1, false, 0),
   new AudioCue("background", 0.6, 1, true, 0),
  
   //add more cues here but make sure you load in the HTML!
   new AudioCue("mob_hit", 1, 1, false, 0),
-  new AudioCue("health_pickup", 1, 1, false, 0),
+  new AudioCue("fail", 1, 1, false, 0),
 ];
 
-var lives = 3;
+var lives = 1;
 var score = 0;
 //#endregion
 
@@ -167,8 +167,8 @@ function UpdateGameState(gameTime) {
     livesElement.innerHTML =  "Lives: " + lives + "/3";
   }
 
-  //if score == 100 then show "You Win! or if time exceeds 60000ms then "Time Up! You Lose!" gameTime.totalElapsedTimeInMs ==10000
-  if(score==20)
+  //if score == 50 then show "You Win!
+  if(score==50)
   {
     //console.log("win");
     objectManager.StatusType = StatusType.Drawn | 0;
@@ -180,6 +180,8 @@ function UpdateGameState(gameTime) {
     //console.log("lose");
     objectManager.StatusType = StatusType.Drawn | 0;
     document.getElementById("menu_lost").style.display = "block";
+    soundManager.Play("fail");
+    soundManager.Pause("background");
   }
 
 
@@ -238,7 +240,7 @@ function LoadSprites() {
   LoadPlayerSprite();
   //LoadPlatformSprites();
   LoadBackgroundSprites();
-  LoadPickupSprites();
+  //LoadPickupSprites();
   LoadEnemySprites();
   LoadArrowSprite();
 }

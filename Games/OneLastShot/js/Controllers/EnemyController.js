@@ -104,10 +104,10 @@ class EnemyController {
             //this.ResetBullet(sprite);
             soundManager.Play("mob_hit");
             parent.Artist.SetTake("monster_die");
-            objectManager.Remove(parent);
+            //objectManager.Remove(parent);
             //this.ResetEnemy(parent);
 
-            score+=10;
+            score+=50;
           }
         }
       }

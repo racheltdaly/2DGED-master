@@ -227,7 +227,7 @@ class PlayerController {
           score += 10;
 
           //play a sound
-          soundManager.Play("health_pickup");
+          //soundManager.Play("health_pickup");
 
           //remove the pickup
           objectManager.Remove(sprite);
@@ -258,9 +258,8 @@ class PlayerController {
         let sprite = sprites[i];
 
         if (Collision.Intersects(parent, sprite)) {
-          //add your code here...
           objectManager.Remove(sprite);
-          soundManager.Play("mob_hit");
+          //soundManager.Play("mob_hit");
           lives=lives-1;
         }
       }
