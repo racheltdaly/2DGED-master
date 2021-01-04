@@ -11,15 +11,20 @@
         <div id="main_game" style="display: block;">
             <div id="ui_score" style="display: none;">Score</div>
             <div id="ui_lives" style="display: none;">Lives</div>
+            <div id="controls" style= "display:none;">P:Pause--Space:Jump--RightArrow:Shoot</div>
             <canvas id="main_canvas" width="1024" height="768"></canvas>
         </div>
 
         <div id="menu_opening" style="display: block;">
-            <div id="ui_text">Press Enter</div>
+            <div id="ui_text"> Welcome to One Last Shot
+                <p>Press Enter</p>
+            </div>
         </div>
 
         <div id="menu_paused" style="display: none;">
-            <div id="ui_text">Paused</div>
+            <div id="ui_text"> || Paused
+                <p>(U-Resume)</p>
+            </div>
         </div>
 
         <div id="menu_win" style="display: none;">
@@ -41,14 +46,10 @@
     <audio preload="auto" id="shot" src="assets/sounds/shot03.wav"></audio>
 
     <!-- Load the texture assets -->
-    <!-- NAME, URL, ACCESSED DEC 2020-->
-    <!-- <img id="spritesheet_main" src="../PlatformPanic_3/assets/images/spritesheet_main.png" style="display: none" />
-    <img id="spritesheet_jungle" src="../PlatformPanic_3/assets/images/terrain/spritesheet_jungle.png" style="display: none" /> -->
-
     <img id="character_walk" src="assets/images/character/archer_walking.png" style="display: none" />
     <img id="character_sheet" src="assets/images/character/character_sheet.png" style="display: none" />
    
-   
+    
     <img id="monster_flying" src="assets/images/enemy/monster_flight.png" style="display: none" />
     <img id="enemy_sheet" src="assets/images/enemy/enemy_sheet.png" style="display: none" />
 

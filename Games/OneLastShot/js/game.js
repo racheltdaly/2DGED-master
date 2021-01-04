@@ -161,7 +161,7 @@ function UpdateGameState(gameTime) {
   var livesElement = document.getElementById("ui_lives");
   if (livesElement) {
     livesElement.style.display = "block";
-    livesElement.innerHTML =  "Lives: " + lives + "/3";
+    livesElement.innerHTML =  "Lives: " + lives;
   }
 
   //if score == 50 then show "You Win!
@@ -222,6 +222,8 @@ function StartGame(gameTime) {
   scoreElement.style.display = "block";
   scoreElement.innerHTML = "Score"+score;
 
+  var scoreElement = document.getElementById("controls");
+  scoreElement.style.display = "block";
   //Hide "Press Enter"
   document.getElementById("menu_opening").style.display = "none"; 
 
