@@ -31,7 +31,6 @@ class PlayerController {
   HandleInput(gameTime, parent) {
     this.HandleMove(gameTime, parent);
     this.HandleJump(gameTime, parent);
-    this.HandleMouse(gameTime, parent);
     this.HandleKeyboard(gameTime, parent);
   }
 
@@ -41,18 +40,11 @@ class PlayerController {
   }
 
   CheckCollisions(parent) {
-    parent.Body.IsOnGround = false;
-    this.HandlePlatformCollision(parent);
     this.HandleEnemyCollision(parent);
-    this.HandlePickupCollision(parent);
+    // this.HandlePickupCollision(parent);
   }
 
   ApplyInput(parent) {
-    //if on the ground then dont apply any Y velocity
-    if (parent.Body.IsOnGround) {
-      parent.Body.SetVelocityY(0);
-    }
-
     //if we have small left over velocity values then set to zero
     if (Math.abs(parent.Body.velocityX) <= Body.MIN_SPEED)
       parent.Body.velocityX = 0;
@@ -69,37 +61,6 @@ class PlayerController {
       parent.Body.velocityX,
       parent.Body.velocityY
     );
-  }
-
-  HandlePlatformCollision(parent) {
-    let sprites = objectManager.Find(ActorType.Platform);
-
-    if (sprites) {
-      for (let i = 0; i < sprites.length; i++) {
-        let sprite = sprites[i];
-
-        let collisionLocationType = Collision.GetIntersectsLocation(
-          parent,
-          sprite
-        );
-
-        if (
-          collisionLocationType === CollisionLocationType.Left ||
-          collisionLocationType === CollisionLocationType.Right
-        )
-        {
-          parent.Body.SetVelocityX(0);
-        } 
-        else if (collisionLocationType === CollisionLocationType.Bottom) {
-          parent.Body.IsOnGround = true;
-          parent.Body.IsJumping = false;
-          parent.Artist.SetTake("run_right");
-        }
-        else if (collisionLocationType === CollisionLocationType.Top) {
-          parent.Body.SetVelocityY(1);
-        }
-      }
-    }
   }
 
   //#endregion
@@ -124,14 +85,6 @@ class PlayerController {
   //#region Your Game Specific Methods - add code for more CD/CR or input handling
 
 
-  /**
-   * Add code in the method to listen for mouse input and do something in the game
-   *
-   * @param {*} gameTime
-   * @param {*} parent
-   * @memberof PlayerController
-   */
-  HandleMouse(gameTime, parent) {}
 
     /**
    * Add code in the method to listen for keyboard input and do something in the game
@@ -158,14 +111,13 @@ class PlayerController {
    */
   HandleMove(gameTime, parent) {
     //if left or right key pressed and player is on the ground then add/remove move velocity
-    if (keyboardManager.IsKeyDown(this.moveKeys[0])) {
+    if (keyboardManager.IsKeyDown(this.moveKeys[0]))
+    {
       parent.Body.AddVelocityX(-this.runVelocity * gameTime.ElapsedTimeInMs);
-      //add your code here...
-      parent.Artist.SetTake("run_left");
-      //parent.Body.IsShooting = false;
-    } else if (keyboardManager.IsKeyDown(this.moveKeys[1])) {
+    } 
+    else if (keyboardManager.IsKeyDown(this.moveKeys[1])) 
+    {
       parent.Body.AddVelocityX(this.runVelocity * gameTime.ElapsedTimeInMs);
-      //add your code here...
       parent.Artist.SetTake("run_right");
       parent.Body.IsShooting = false;
     }
@@ -182,61 +134,17 @@ class PlayerController {
    */
   HandleJump(gameTime, parent) {
     //if jump key is pressed and player is not jumping and on the ground then jump
-    if (
-      keyboardManager.IsKeyDown(this.moveKeys[2])
-      //  &&
-      // !parent.Body.IsJumping 
-      // &&
-      // parent.Body.IsOnGround
-    ) 
+    if (keyboardManager.IsKeyDown(this.moveKeys[2])) 
     {
       
       parent.Body.IsJumping = true;
       parent.Body.IsShooting = false;
-      //parent.Body.IsOnGround = false;
       parent.Body.SetVelocityY(-this.jumpVelocity * gameTime.ElapsedTimeInMs);
-      
-      //add your code here...
-      //set take to "player_jump"
       parent.Artist.SetTake("jump");
-      //soundManager.Play("gunshot"); //obviously we would source and load an appropriate "jump" sound here
+      
     }
   }
 
-  /**
-   * Change the code in this method to play a particular sound when the player collects
-   * a pickup, update the score based on the pickup ID, and possibly play a celebration 
-   * animation if the pickup is the final level objective.
-   *
-   * @param {*} gameTime
-   * @param {*} parent
-   * @memberof PlayerController
-   */
-  HandlePickupCollision(parent) {
-    let sprites = objectManager.Find(ActorType.Pickup);
-
-    if (sprites) {
-      for (let i = 0; i < sprites.length; i++) {
-        let sprite = sprites[i];
-
-        //we can use simple collision check here (i.e. Intersects) because dont need to think was it top, bottom, left, or right
-        if (Collision.Intersects(parent, sprite)) {
-          //add your code here...
-
-          //add to the score
-          score += 10;
-
-          //play a sound
-          //soundManager.Play("health_pickup");
-
-          //remove the pickup
-          objectManager.Remove(sprite);
-
-          
-        }
-      }
-    }
-  }
 
   /**
    * Change the code in this method to play a particular sound when the player 
@@ -259,7 +167,7 @@ class PlayerController {
 
         if (Collision.Intersects(parent, sprite)) {
           objectManager.Remove(sprite);
-          //soundManager.Play("mob_hit");
+          soundManager.Play("mob_hit");
           lives=lives-1;
         }
       }
@@ -281,8 +189,8 @@ class PlayerController {
   { 
     if (Collision.Intersects(parent, screenBounds)) 
     {
-          //add your code here...
-         console.log("boop")
+          //DOESNT WORK
+         console.log("hit")
     }
       
     

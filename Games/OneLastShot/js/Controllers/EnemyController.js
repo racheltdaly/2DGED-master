@@ -47,7 +47,7 @@ class EnemyController {
         new Vector2(parent.Body.velocityX, parent.Body.velocityY)
       );
   
-      //update the bounding surface when the player moves
+      //update the bounding surface when the enemy moves
       parent.collisionPrimitive.Move(
         parent.Body.velocityX,
         parent.Body.velocityY

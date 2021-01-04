@@ -8,14 +8,13 @@ class BulletController
 {
     /**
      * Creates an instance of SimpleMoveController to show how we can move a sprite with a controller
-     * @param {Vector2} moveDirection Vector2 direction mormalize with length=1 (see Vector2.Normalize())
+     * 
      * @param {Number} moveSpeed Floating-point speed value
      * @memberof BulletController
      */
     constructor(moveSpeed)
     {
-          //this.moveDirection = moveDirection;
-          this.moveSpeed = moveSpeed;
+      this.moveSpeed = moveSpeed;
     }
 
 
@@ -57,6 +56,7 @@ class BulletController
       //Hold to shoot
       if (keyboardManager.IsKeyDown(Keys.ArrowRight)) {
          parent.Body.AddVelocityX(this.moveSpeed * 8);
+         soundManager.Play("shot");
       }
       
       else 

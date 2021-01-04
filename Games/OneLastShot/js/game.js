@@ -130,7 +130,7 @@ function LoadDebug(bDebugEnabled) {
 //stores object manager which holds all sprites
 
 const cueArray = [
-  new AudioCue("coin_pickup", 1, 1, false, 1),
+  // new AudioCue("coin_pickup", 1, 1, false, 1),
   //new AudioCue("gameover", 1, 1, false, 1),
   //new AudioCue("gunshot", 1, 1, false, 0),
   new AudioCue("background", 0.6, 1, true, 0),
@@ -138,6 +138,8 @@ const cueArray = [
   //add more cues here but make sure you load in the HTML!
   new AudioCue("mob_hit", 1, 1, false, 0),
   new AudioCue("fail", 1, 1, false, 0),
+  new AudioCue("shot", 1, 1, false, 0),
+  
 ];
 
 var lives = 1;
