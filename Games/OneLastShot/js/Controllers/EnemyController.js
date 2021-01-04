@@ -22,7 +22,7 @@ class EnemyController {
     Execute(gameTime, parent) {
         parent.Body.AddVelocityX(-this.moveVelocity * 8);
     //   this.HandleMove(gameTime, parent);
-    //   //this.ApplyForces(parent);
+      //this.ApplyForces(parent);
          this.CheckCollisions(parent);
          this.ApplyInput(parent);
     }
@@ -94,25 +94,20 @@ class EnemyController {
      * @memberof EnemyController
      */
     HandleBulletCollision(parent) {
-      // let sprites = objectManager.Find(ActorType.Bullet);      
-      //   if(sprites)
-      //   {
-      //       //we can use simple collision check here (i.e. Intersects) because dont need to think was it top, bottom, left, or right
-      //       if (Collision.Intersects(parent, sprite)) 
-      //       {
-      //           //add your code here...
+      let sprites = objectManager.Find(ActorType.Bullet);
 
-      //           //add to the score
-      //           score += 10;
-
-      //           //play a sound
-      //           soundManager.Play("mob_hit");
-
-      //           //remove the pickup
-      //           //parent.Artist.SetTake("run_right");
-      //           objectManager.Remove(sprite);
-      //       }
-      //   }
+      if (sprites) {
+        for (let i = 0; i < sprites.length; i++) {
+          let sprite = sprites[i];
+  
+          if (Collision.Intersects(parent, sprite)) {
+            //add your code here...
+            objectManager.Remove(sprite);
+            soundManager.Play("mob_hit");
+            score+=10;
+          }
+        }
+      }
     }
   
     //#endregion

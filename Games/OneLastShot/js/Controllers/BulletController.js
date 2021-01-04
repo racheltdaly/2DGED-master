@@ -12,9 +12,9 @@ class BulletController
      * @param {Number} moveSpeed Floating-point speed value
      * @memberof BulletController
      */
-    constructor(moveDirection, moveSpeed)
+    constructor(moveSpeed)
     {
-          this.moveDirection = moveDirection;
+          //this.moveDirection = moveDirection;
           this.moveSpeed = moveSpeed;
     }
 
@@ -28,22 +28,39 @@ class BulletController
      */
     Execute(gameTime, parent)
     {
-       let translateBy = Vector2.MultiplyScalar(this.moveDirection, gameTime.ElapsedTimeInMs * this.moveSpeed);
-       parent.Transform2D.TranslateBy(translateBy);
-      
-      // parent.Transform2D.RotateBy(GDMath.ToRadians(30));
-
-      //check each player in the objectmanager and check for collision
-         //remove bullet
-         //decrement score
-
-
-
+      this.HandleMove(gameTime, parent);
+      this.ApplyInput(parent);
     }
 
+    ApplyInput(parent) {
+     
+      //if we have small left over velocity values then set to zero
+      if (Math.abs(parent.Body.velocityX) <= Body.MIN_SPEED)
+        parent.Body.velocityX = 0;
+      if (Math.abs(parent.Body.velocityY) <= Body.MIN_SPEED)
+        parent.Body.velocityY = 0;
+  
+      //apply velocity to (x,y) of the parent's translation
+      parent.Transform2D.TranslateBy(
+        new Vector2(parent.Body.velocityX, parent.Body.velocityY)
+      );
+  
+      //update the bounding surface when the bullet moves
+      parent.collisionPrimitive.Move(
+        parent.Body.velocityX,
+        parent.Body.velocityY
+      );
+    }
+
+   HandleMove(gameTime, parent) {
+      if (keyboardManager.IsKeyDown(Keys.ArrowRight)) {
+         parent.Body.AddVelocityX(this.moveSpeed * 8);
+      }
+     
+   }
 
    Clone() {
-    return new BulletController(this.moveDirection, this.moveSpeed);
+    return new BulletController(this.moveSpeed);
    }
 
    //to do...Equals, GetHashCode

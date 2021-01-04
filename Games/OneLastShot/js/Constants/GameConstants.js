@@ -12,12 +12,13 @@ class SpriteData {
   static RUNNER_JUMP_VELOCITY = 0.2;
 
   static ARROW_START_POSITION = new Vector2(25, 350);
+  static ARROW_MOVE_VELOCITY = 0.02;
 
   //randomises enemy start position
   static ENEMY_X = (Math.ceil(Math.random() * 100)+850);
   static ENEMY_Y = (Math.ceil(Math.random() * 410)+50);
 
-  static ENEMY_START_POSITION = new Vector2(this.ENEMY_X,this.ENEMY_Y);
+  static ENEMY_START_POSITION = new Vector2(100,350);
   static ENEMY_MOVE_VELOCITY = 0.002;
   
   static CHARACTER_ANIMATION_DATA = Object.freeze({

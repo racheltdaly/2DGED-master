@@ -334,13 +334,13 @@ function LoadArrowSprite() {
    0
  );
 
-//  enemySprite.AttachController
-//  (
-//   new EnemyController
-//   (
-//     SpriteData.ENEMY_MOVE_VELOCITY
-//   )
-// );
+  bulletSprite.AttachController
+ (
+    new BulletController
+    (
+      SpriteData.ARROW_MOVE_VELOCITY
+    )
+  );
 
  objectManager.Add(bulletSprite);
 
