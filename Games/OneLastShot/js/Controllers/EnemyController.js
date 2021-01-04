@@ -94,25 +94,25 @@ class EnemyController {
      * @memberof EnemyController
      */
     HandleBulletCollision(parent) {
-      let sprites = objectManager.Find(ActorType.Bullet);      
-        if(sprites)
-        {
-            //we can use simple collision check here (i.e. Intersects) because dont need to think was it top, bottom, left, or right
-            if (Collision.Intersects(parent, sprite)) 
-            {
-                //add your code here...
+      // let sprites = objectManager.Find(ActorType.Bullet);      
+      //   if(sprites)
+      //   {
+      //       //we can use simple collision check here (i.e. Intersects) because dont need to think was it top, bottom, left, or right
+      //       if (Collision.Intersects(parent, sprite)) 
+      //       {
+      //           //add your code here...
 
-                //add to the score
-                score += 10;
+      //           //add to the score
+      //           score += 10;
 
-                //play a sound
-                soundManager.Play("mob_hit");
+      //           //play a sound
+      //           soundManager.Play("mob_hit");
 
-                //remove the pickup
-                //parent.Artist.SetTake("run_right");
-                objectManager.Remove(sprite);
-            }
-        }
+      //           //remove the pickup
+      //           //parent.Artist.SetTake("run_right");
+      //           objectManager.Remove(sprite);
+      //       }
+      //   }
     }
   
     //#endregion

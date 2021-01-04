@@ -240,6 +240,7 @@ function LoadSprites() {
   LoadBackgroundSprites();
   LoadPickupSprites();
   LoadEnemySprites();
+  LoadArrowSprite();
 }
 
 function LoadPlayerSprite() {
@@ -294,6 +295,56 @@ function LoadPlayerSprite() {
   objectManager.Add(playerSprite); //add player sprite
 }
 
+function LoadArrowSprite() {
+ //step 1 - create AnimatedSpriteArtist
+ var takeName = "arrow";
+ artist = new AnimatedSpriteArtist(ctx, SpriteData.ARROW_ANIMATION_DATA);
+
+ //step 2 - set initial take
+ artist.SetTake(takeName);
+
+ //step 3 - create transform and use bounding box from initial take (this is why we make AnimatedSpriteArtist before Transform2D)
+ let transform = new Transform2D(
+   SpriteData.ARROW_START_POSITION,
+   0,
+   Vector2.One,
+   Vector2.Zero,
+   artist.GetSingleFrameDimensions("arrow"),
+   0
+ );
+
+ //step 4 - create the CollidableSprite which adds Body which allows us to test for collision and add gravity
+ let bulletSprite = new CollidableSprite(
+   "bullet",
+   ActorType.Bullet,
+   StatusType.Updated | StatusType.Drawn,
+   transform,
+   artist,
+   1
+ );
+
+ //step 5 - set performance characteristics of the body attached to the moveable sprite
+ bulletSprite.Body.MaximumSpeed = 6;
+ bulletSprite.Body.Friction = 0.7;//change
+ bulletSprite.Body.Gravity = 0.4;// change
+
+ //step 6 - add collision surface
+ bulletSprite.collisionPrimitive = new RectCollisionPrimitive(
+   bulletSprite.Transform2D,
+   0
+ );
+
+//  enemySprite.AttachController
+//  (
+//   new EnemyController
+//   (
+//     SpriteData.ENEMY_MOVE_VELOCITY
+//   )
+// );
+
+ objectManager.Add(bulletSprite);
+
+}
 function LoadPickupSprites() {
   //to add lots of pickups we can also just create a local array of positions for the pickups
   let pickTranslationArray = [

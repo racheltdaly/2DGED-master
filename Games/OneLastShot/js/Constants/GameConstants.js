@@ -11,6 +11,8 @@ class SpriteData {
   static RUNNER_RUN_VELOCITY = 0.2;
   static RUNNER_JUMP_VELOCITY = 0.2;
 
+  static ARROW_START_POSITION = new Vector2(25, 350);
+
   //randomises enemy start position
   static ENEMY_X = (Math.ceil(Math.random() * 100)+850);
   static ENEMY_Y = (Math.ceil(Math.random() * 410)+50);
@@ -130,26 +132,22 @@ class SpriteData {
 
   static ARROW_ANIMATION_DATA = Object.freeze({
     id: "arrow_animation_data",
-    spriteSheet: document.getElementById("monster_flying").style.display = "none",
-    actorType: ActorType.Enemy,
+    spriteSheet: document.getElementById("character_sheet"),
+    actorType: ActorType.Bullet,
     alpha: 1,
     takes: {  
-      "monster_fly" :  {    
+      "arrow" :  {    
         fps: 12,
         maxLoopCount: -1, //-1 = always, 0 = run once, N = run N times
         startCellIndex: 0,
-        endCellIndex: 2,
-        boundingBoxDimensions: new Vector2(47, 36), 
-        cellData: [
-          new Rect(1100, 60, 45, 31),
-          new Rect(950, 60, 42, 25),
-          new Rect(800, 60, 46, 28),
-          new Rect(650, 60, 46, 27),
-          new Rect(500, 60, 46, 27),
-          new Rect(350, 60, 45, 30),
-          new Rect(200, 60, 47, 36),
-          new Rect(50, 60, 45, 34)
+        endCellIndex: 1,
+        boundingBoxDimensions: new Vector2(32, 15), 
+        cellData:
+        [
+          new Rect(560, 45, 32, 15),
+          new Rect(560, 45, 32, 15)
         ]
+        
       }
     }
   });
