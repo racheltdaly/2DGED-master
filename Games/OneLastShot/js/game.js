@@ -130,12 +130,7 @@ function LoadDebug(bDebugEnabled) {
 //stores object manager which holds all sprites
 
 const cueArray = [
-  // new AudioCue("coin_pickup", 1, 1, false, 1),
-  //new AudioCue("gameover", 1, 1, false, 1),
-  //new AudioCue("gunshot", 1, 1, false, 0),
   new AudioCue("background", 0.6, 1, true, 0),
- 
-  //add more cues here but make sure you load in the HTML!
   new AudioCue("mob_hit", 1, 1, false, 0),
   new AudioCue("fail", 1, 1, false, 0),
   new AudioCue("shot", 1, 1, false, 0),
@@ -240,9 +235,7 @@ function StartGame(gameTime) {
 
 function LoadSprites() {
   LoadPlayerSprite();
-  //LoadPlatformSprites();
   LoadBackgroundSprites();
-  //LoadPickupSprites();
   LoadEnemySprites();
   LoadArrowSprite();
 }
@@ -329,8 +322,8 @@ function LoadArrowSprite() {
 
  //step 5 - set performance characteristics of the body attached to the moveable sprite
  bulletSprite.Body.MaximumSpeed = 6;
- bulletSprite.Body.Friction = 0.7;//change
- bulletSprite.Body.Gravity = 0.4;// change
+ bulletSprite.Body.Friction = 0.7;
+ bulletSprite.Body.Gravity = 0.4;
 
  //step 6 - add collision surface
  bulletSprite.collisionPrimitive = new RectCollisionPrimitive(
@@ -349,63 +342,8 @@ function LoadArrowSprite() {
  objectManager.Add(bulletSprite);
 
 }
-function LoadPickupSprites() {
-  //to add lots of pickups we can also just create a local array of positions for the pickups
-  let pickTranslationArray = [
-    new Vector2(200, 525),
-    new Vector2(525, 525),
-    new Vector2(725, 425),
-  ];
 
-  //set the take name for the animation - we could change to "gold_glint" easily
-  var takeName = "ruby_glint";
 
-  //loop through the translation array
-  for (var translation of pickTranslationArray) {
-    //create an animated artist
-    spriteArtist = new AnimatedSpriteArtist(
-      ctx,
-      SpriteData.COLLECTIBLES_ANIMATION_DATA
-    );
-
-    //set the take
-    spriteArtist.SetTake(takeName);
-
-    //retrieve the dimensions of a single frame of the animation for the bounding box
-    var frameDimensions = spriteArtist.GetSingleFrameDimensions(takeName);
-
-    //set the origin so that the collision surface is in the center of the sprite
-    var origin = Vector2.DivideScalar(frameDimensions, 2);
-
-    //create a transform to position the pickup
-    let transform = new Transform2D(
-      translation,
-      0,
-      Vector2.One,
-      origin,
-      frameDimensions
-    );
-
-    //create the sprite and give it type "Pickup"
-    let pickupSprite = new Sprite(
-      "gold",
-      ActorType.Pickup,
-      StatusType.Updated | StatusType.Drawn,
-      transform,
-      spriteArtist,
-      1
-    );
-
-    // add the collision surface to test for collisions against
-    pickupSprite.collisionPrimitive = new CircleCollisionPrimitive(
-      pickupSprite.Transform2D,
-      15
-    );
-
-    //add to the object manager
-    objectManager.Add(pickupSprite);
-  }
-}
 
 function LoadBackgroundSprites() {
   //access the data
@@ -440,50 +378,6 @@ function LoadBackgroundSprites() {
         backgroundData[i].layerDepth
       )
     );
-  }
-}
-
-function LoadPlatformSprites() {
-  //access the data
-  var platformData = SpriteData.PLATFORM_DATA;
-
-  //create tha artist
-  let spriteArtist = new SpriteArtist(
-    ctx,
-    platformData.spriteSheet,
-    platformData.alpha,
-    platformData.sourcePosition,
-    platformData.sourceDimensions
-  );
-
-  //create the transform
-  let transform = new Transform2D(
-    platformData.translationArray[0],
-    platformData.rotation,
-    platformData.scale,
-    platformData.origin,
-    platformData.sourceDimensions
-  );
-
-  //create a single archetypal platform sprite
-  let archetypeSprite = new Sprite(
-    platformData.id,
-    platformData.actorType,
-    StatusType.Updated | StatusType.Drawn,
-    transform,
-    spriteArtist
-  );
-
-  //now clone the archetype
-  let clone = null;
-  for (let i = 0; i < platformData.translationArray.length; i++) {
-    clone = archetypeSprite.Clone();
-    //set the position of the clone
-    clone.Transform2D.Translation = platformData.translationArray[i];
-    //dont forget - if its collidable then it needs a circle or rect collision primitive
-    clone.collisionPrimitive = new RectCollisionPrimitive(clone.Transform2D, 0);
-    //add to the manager
-    objectManager.Add(clone);
   }
 }
 
